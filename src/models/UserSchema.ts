@@ -27,6 +27,7 @@ UserModel.methods.generateToken = function () {
 }
 UserModel.pre("save", async function (next) {
       if (this.isModified("password")) {
+            console.log(this)
             this.password = await bcrypt.hash(this.password as string, 8)
       }
       next()
